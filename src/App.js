@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
+import Navigation from "./routes-nav/Navigation";
+import Routes from "./routes-nav/Routes";
 import JoblyApi from "./api/api";
 
 function App() {
   return (
-    <div><h1>Jobly APP</h1></div>
+    <BrowserRouter>
+      <Navigation />
+      <Routes />
+    </BrowserRouter>
   );
 }
 
