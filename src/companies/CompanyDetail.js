@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import JoblyApi from "../api/api";
+import { useParams } from "react-router-dom";
 
 /**
  * Company Detail 
@@ -7,12 +9,22 @@ import React from "react";
  */
 
 function CompanyDetail() {
-    return (
-        <div>
-            <h1>Company Detail</h1>
-            <h2>Company details go here</h2>
-        </div>
-    );
+  const { handle } = useParams();
+  const [company, setCompany] = useState(null);
+
+  useEffect(function getCompanyDetail() {
+    async function getCompany() {
+      setCompany(await JoblyApi.getCompany(handle));
+    }
+    getCompany();
+  }, [handle]);
+
+  return (
+    <div>
+      <h1>{company.name}</h1>
+      <h4>{company.description}</h4>
+    </div>
+  );
 }
 
 export default CompanyDetail;
