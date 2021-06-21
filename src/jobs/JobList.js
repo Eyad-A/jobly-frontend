@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import JoblyApi from "../api/api";
-import Search from "../common/SearchForm";
+import SearchForm from "../common/SearchForm";
 import JobCardList from "./JobCardList";
 
 /**
@@ -10,10 +10,10 @@ import JobCardList from "./JobCardList";
  */
 
 function JobList() {
-  const [jobs, setJobs] = useState(null);
+  const [jobs, setJobs] = useState([]);
 
   useEffect(function getAllJobs() {
-    Search();
+    search();
   }, []);
 
   async function search(title) {
@@ -23,7 +23,7 @@ function JobList() {
 
   return (
     <div>
-      <Search searchFor={search} />
+      <SearchForm searchFor={search} />
       {jobs.length 
         ? <JobCardList jobs={jobs} />
         : <p>No results found</p>

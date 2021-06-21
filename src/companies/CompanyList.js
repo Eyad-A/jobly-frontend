@@ -11,20 +11,20 @@ import CompanyCard from "./CompanyCard";
 
 function CompanyList() {
   console.debug("CompanyList");
-  const [companies, setCompanies] = useState(null);
+    const [companies, setCompanies] = useState([]);
 
-  // useEffect(function getCompaniesOnMount() {
-  //   console.debug("getCompaniesOnMount");
-  //   search();
-  // }, []);
-
-  useEffect(() => {
-    async function getListOfCompanies() {
-      let res = await JoblyApi.getCompanies();
-      setCompanies(res);
-    }
-    getListOfCompanies();
+  useEffect(function getCompaniesOnMount() {
+    console.debug("getCompaniesOnMount");
+    search();
   }, []);
+
+  // useEffect(() => {
+  //   async function getListOfCompanies() {
+  //     let res = await JoblyApi.getCompanies();
+  //     setCompanies(res);
+  //   }
+  //   getListOfCompanies();
+  // }, []);
 
   // on search form submit, run this function 
   async function search(name) {
