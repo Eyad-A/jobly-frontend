@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 import JoblyApi from "./api/api";
 import UserContext from "./auth/UserContext";
 import useLocalStorage from "./hooks/userLocalStorage";
+import LoadingSpinner from "./common/LoadingSpinner";
 
 export const TOKEN_LOCAL_STORAGE_ID = "jobly-token";
 
@@ -13,6 +14,7 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useLocalStorage(TOKEN_LOCAL_STORAGE_ID);
+  const [infoLoaded, setInfoLoaded] = useState(false);
 
   // Load the user info from the API 
   useEffect(function loadUserInfo() {
@@ -28,8 +30,9 @@ function App() {
           setCurrentUser(null);
         }
       }
-
+      setInfoLoaded(true);
     }
+    setInfoLoaded(false);
     getCurrentUser();
   }[token]);
 
@@ -71,7 +74,7 @@ function App() {
     }
   }
 
-
+  if (!infoLoaded) return <LoadingSpinner />;
 
   return (
     <BrowserRouter>
