@@ -5,7 +5,7 @@ import Routes from "./routes-nav/Routes";
 import jwt from "jsonwebtoken";
 import JoblyApi from "./api/api";
 import UserContext from "./auth/UserContext";
-import useLocalStorage from "./hooks/userLocalStorage";
+import useLocalStorage from "./hooks/useLocalStorage";
 import LoadingSpinner from "./common/LoadingSpinner";
 
 export const TOKEN_LOCAL_STORAGE_ID = "jobly-token";
@@ -14,10 +14,10 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useLocalStorage(TOKEN_LOCAL_STORAGE_ID);
-  const [infoLoaded, setInfoLoaded] = useState(false);
+  const [infoLoaded, setInfoLoaded] = useState(false);  
 
   // Load the user info from the API 
-  useEffect(function loadUserInfo() {
+  useEffect(function loadUserInfo() {    
     async function getCurrentUser() {
       if (token) {
         try {
@@ -34,7 +34,7 @@ function App() {
     }
     setInfoLoaded(false);
     getCurrentUser();
-  }[token]);
+  }, [token]);
 
   // Logout function 
   function logout() {

@@ -8,7 +8,7 @@ import JobList from "../jobs/JobList";
 import CompanyDetail from "../companies/CompanyDetail";
 import ProfileForm from "../profiles/ProfileForm";
 
-function Routes() {
+function Routes({ login, signup }) {
   return (
     <div className="pt-5">
       <Switch>
@@ -18,11 +18,11 @@ function Routes() {
         </Route>
 
         <Route exact path="/login">
-          <LoginForm />
+          <LoginForm login={login} />
         </Route>
 
         <Route exact path="/signup">
-          <SignupForm />
+          <SignupForm signup={signup} />
         </Route>
 
         <Route exact path="/companies">
