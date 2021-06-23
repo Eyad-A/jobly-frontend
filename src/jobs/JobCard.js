@@ -8,27 +8,54 @@ import UserContext from "../auth/UserContext";
 
 function JobCard({ id, title, salary, equity, companyName }) {
 
-  const { currentUser } = useContext(UserContext);
+  const { hasAppliedToJob, applyToJob } = useContext(UserContext);
+  // const { currentUser } = UserContext(UserContext);  
+  const [applied, setApplied] = useState();
 
-  if (currentUser) {
-    return (
-      <div>
-        <h3>{title}</h3>
-        <p>{companyName}</p>
-        <p>{salary} - {equity}</p>
-        <h3>YOU CAN APPLY</h3>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <h3>{title}</h3>
-        <p>{companyName}</p>
-        <p>{salary} - {equity}</p>
-        <h3>LOG IN TO APPLY</h3>
-      </div>
-    );
+  React.useEffect(function updateAppliedStatus() {
+    setApplied(hasAppliedToJob(id));
+  }, [id, hasAppliedToJob]);
+
+  async function handleApply(evt) {
+    if (hasAppliedToJob(id)) return;
+    applyToJob(id);
+    setApplied(true);
   }
+
+  // if (currentUser) {
+  return (
+    <div> {applied}
+      <h3>{title}</h3>
+      <p>{companyName}</p>
+      {salary && <div>Salary: {formatSalary(salary)}</div>}
+      {equity !== undefined && <div>Equity: {equity}</div>}
+      <button onClick={handleApply} disabled={applied}>
+        {applied ? "Applied" : "Apply"}
+      </button>
+    </div>
+  );
+  // } else {
+  //   return (
+  //     <div>
+  //       <h3>{title}</h3>
+  //       <p>{companyName}</p>
+  //       {salary && <div>Salary: {formatSalary(salary)}</div>}
+  //       {equity !== undefined && <div>Equity: {equity}</div>}
+  //       <p>LOG IN TO APPLY</p>
+  //     </div>
+  //   );
+  // }
+}
+
+function formatSalary(salary) {
+  const digits = [];
+  const salaryStr = salary.toString();
+
+  for (let i = salaryStr.length - 1; i >= 0; i--) {
+    digits.push(salaryStr[i]);
+    if (i > 0 && i % 3 === 0) digits.push(",");
+  }
+  return digits.reverse().join("");
 }
 
 export default JobCard;
