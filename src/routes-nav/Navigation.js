@@ -44,6 +44,16 @@ function Navigation({ logout }) {
     return (
       <ul>
         <li>
+          <NavLink to="/companies">
+            Companies 
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/jobs">
+            Jobs
+          </NavLink>
+        </li>
+        <li>
           <NavLink to="/login">
             Login 
           </NavLink>
