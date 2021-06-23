@@ -12,7 +12,7 @@ import LoadingSpinner from "../common/LoadingSpinner";
 
 function CompanyDetail() {
   const { handle } = useParams();
-  const [company, setCompany] = useState([]);
+  const [company, setCompany] = useState(null);
 
   useEffect(function getCompanyAndJobs() {
     async function getCompany() {
