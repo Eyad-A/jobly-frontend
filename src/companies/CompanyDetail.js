@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import JoblyApi from "../api/api";
 import { useParams } from "react-router-dom";
+import JobCardList from "../jobs/JobCardList";
+import LoadingSpinner from "../common/LoadingSpinner";
 
 /**
  * Company Detail 
@@ -10,19 +12,22 @@ import { useParams } from "react-router-dom";
 
 function CompanyDetail() {
   const { handle } = useParams();
-  const [company, setCompany] = useState(null);
+  const [company, setCompany] = useState([]);
 
-  useEffect(function getCompanyDetail() {
+  useEffect(function getCompanyAndJobs() {
     async function getCompany() {
       setCompany(await JoblyApi.getCompany(handle));
     }
-    getCompany();
+    getCompany();    
   }, [handle]);
+
+  if (!company) return <LoadingSpinner />;
 
   return (
     <div>
       <h1>{company.name}</h1>
       <h4>{company.description}</h4>
+      <JobCardList jobs={company.jobs} />      
     </div>
   );
 }

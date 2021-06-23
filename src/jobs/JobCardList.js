@@ -5,7 +5,7 @@ import JobCard from "./JobCard";
  * Renders a list of job cards  * 
  */
 
-function JobCardList({ jobs }) {
+function JobCardList({ jobs }) {  
   return (
     <div>
       {jobs.map(job => (
