@@ -8,7 +8,7 @@ import UserContext from "../auth/UserContext";
 
 function JobCard({ id, title, salary, equity, companyName }) {
 
-  const { hasAppliedToJob, applyToJob } = useContext(UserContext);
+  const { hasAppliedToJob, applyToJob } = useContext(UserContext);  
   // const { currentUser } = UserContext(UserContext);  
   const [applied, setApplied] = useState();
 

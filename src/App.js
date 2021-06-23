@@ -14,7 +14,8 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useLocalStorage(TOKEN_LOCAL_STORAGE_ID);
-  const [infoLoaded, setInfoLoaded] = useState(false);  
+  const [infoLoaded, setInfoLoaded] = useState(false); 
+  const [applicationIds, setApplicationIds]  = useState(new Set([]));
 
   // Load the user info from the API 
   useEffect(function loadUserInfo() {    
@@ -74,11 +75,21 @@ function App() {
     }
   }
 
+  function hasAppliedToJob(id) {
+    return applicationIds.has(id);
+  }
+
+  function applyToJob(id) {
+    if (hasAppliedToJob(id)) return;
+    JoblyApi.applyToJob(currentUser.username, id);
+    setApplicationIds(new Set([...applicationIds, id]));
+  }
+
   if (!infoLoaded) return <LoadingSpinner />;
 
   return (
     <BrowserRouter>
-      <UserContext.Provider value={{ currentUser, setCurrentUser }}>
+      <UserContext.Provider value={{ currentUser, setCurrentUser, hasAppliedToJob, applyToJob }}>
         <div>
           <Navigation logout={logout} />
           <Routes login={login} signup={signup} />
