@@ -7,6 +7,7 @@ import CompanyList from "../companies/CompanyList";
 import JobList from "../jobs/JobList";
 import CompanyDetail from "../companies/CompanyDetail";
 import ProfileForm from "../profiles/ProfileForm";
+import PrivateRoute from "./PrivateRoute";
 
 function Routes({ login, signup }) {
   return (
@@ -37,9 +38,9 @@ function Routes({ login, signup }) {
           <CompanyDetail />
         </Route>
         
-        <Route exact path="/profile">
+        <PrivateRoute exact path="/profile">
           <ProfileForm />
-        </Route>
+        </PrivateRoute>
 
         <Redirect to="/" />
       </Switch>
