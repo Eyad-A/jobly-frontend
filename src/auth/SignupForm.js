@@ -37,59 +37,74 @@ function SignupForm({ signup }) {
   }
 
   return (
-    <div>
-      <div>
-        <h1>Signup Form</h1>
+    <div className="container my-5">
+      <div className="row">
+        <div className="col-lg-2">
+
+        </div>
+        <div className="col-lg-10">
+          <h1>Signup Form</h1>
+          <div className="my-3">
+            <form onSubmit={handleSubmit}>
+              <div className="col-lg-9 my-2">
+                <input
+                  name="username"
+                  className="form-control"
+                  placeholder="Username"
+                  value={formData.username}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="col-lg-9 my-2">
+                <input
+                  name="password"
+                  className="form-control"
+                  placeholder="Password"
+                  type="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="col-lg-9 my-2">
+                <input
+                  name="firstName"
+                  className="form-control"
+                  placeholder="First name"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="col-lg-9 my-2">
+                <input
+                  name="lastName"
+                  className="form-control"
+                  placeholder="Last name"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="col-lg-9 my-2">
+                <input
+                  name="email"
+                  className="form-control"
+                  placeholder="Email address"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+              </div>
+              <button className="btn btn-lg btn-primary my-3">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+        <div className="col-lg-2">
+
+        </div>
       </div>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Username</label>
-            <input
-              name="username"
-              value={formData.username}
-              onChange={handleChange}              
-            />
-          </div>
-          <div>
-            <label>Password</label>
-            <input
-              name="password"
-              type="password"
-              value={formData.password}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>First name</label>
-            <input
-              name="firstName"              
-              value={formData.firstName}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>Last name</label>
-            <input
-              name="lastName"              
-              value={formData.lastName}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>Email</label>
-            <input
-              name="email"              
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-          </div>
-          <button>
-            Submit
-          </button>
-        </form>
-      </div>
+
+
     </div>
   );
 }

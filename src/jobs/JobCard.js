@@ -45,7 +45,7 @@ function JobCard({ id, title, salary, equity, companyName }) {
           <p>{companyName}</p>
           {salary && <div>Salary: {formatSalary(salary)}</div>}
           {equity !== undefined && <div>Equity: {equity}</div>}
-          <p>LOG IN TO APPLY</p>
+          <a href="/login"><button className="btn btn-primary my-3 font-weight-bold float-right">Log in to apply</button></a>
         </div>
       </div>
     );

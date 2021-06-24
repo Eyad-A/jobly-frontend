@@ -24,10 +24,10 @@ function Homepage() {
           <h3>Welcome back, {currentUser.firstName || currentUser.username}</h3>
           : (
             <p>
-              <Link className="btn btn-primary font-weight-bold mx-2 my-2" to="/login">
+              <Link className="btn btn-primary btn-lg font-weight-bold mx-2 my-2" to="/login">
                 Login 
               </Link>
-              <Link className="btn btn-primary font-weight-bold mx-2 my-2" to="/signup">
+              <Link className="btn btn-primary btn-lg font-weight-bold mx-2 my-2" to="/signup">
                 Signup 
               </Link>
             </p>

@@ -60,63 +60,78 @@ function ProfileForm() {
   }
 
   return (
-    <div>
-      <h1>Profile Form</h1>
-      <div>
-        <form>
-          <div>
-            <label>Username</label>
-            <p>{formData.username}</p>
-          </div>
-          <div>
-            <label>First Name</label>
-            <input
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>Last Name</label>
-            <input
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>Email</label>
-            <input
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>Confirm password to make changes</label>
-            <input
-              name="password"
-              type="password"
-              value={formData.password}
-              onChange={handleChange}
-            />
-          </div>
+    <div className="container my-5">
+      <div className="row">
+        <div className="col-lg-2">
 
-          {formErrors.length ?
-            <Alert type="danger" message={formErrors} />
-            : null
-          }
+        </div>
+        <div className="col-lg-10">
+          <h1>Profile Form</h1>
+          <div className="my-3">
+            <form>
+              <div className="col-lg-12 my-2">
+                <label>Username</label>               
+                <p>{formData.username}</p>
+              </div>
+              <div className="col-lg-12 my-2">
+                <label>First name</label>                
+                <input
+                  name="firstName"
+                  className="form-control"                  
+                  value={formData.firstName}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="col-lg-12 my-2">
+                <label>Last name</label>            
+                <input
+                  name="lastName"
+                  className="form-control"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="col-lg-12 my-2">
+                <label>Email</label>
+                <input
+                  name="email"
+                  className="form-control"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="col-lg-12 my-2">
+                <label>Confirm password to make changes</label>
+                <input
+                  name="password"
+                  className="form-control"
+                  type="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                />
+              </div>
 
-          {saveConfirmed ?
-            <Alert type="success" messages={["Update successful"]} />
-            : null
-          }
+              {formErrors.length ?
+                <Alert type="danger" message={formErrors} />
+                : null
+              }
 
-          <button onClick={handleSubmit}>
-            Save
-          </button>
-        </form>
+              {saveConfirmed ?
+                <Alert type="success" messages={["Update successful"]} />
+                : null
+              }
+
+              <button className="btn btn-lg btn-primary my-3" onClick={handleSubmit}>
+                Save
+              </button>
+            </form>
+          </div>
+        </div>
+        <div className="col-lg-2">
+
+        </div>
       </div>
+
     </div>
   );
 }

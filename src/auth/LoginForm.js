@@ -33,35 +33,45 @@ function LoginForm({ login }) {
   }
 
   return (
-    <div>
-      <div>
-        <h1>Login Form</h1>
-      </div>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Username</label>
-            <input
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              required
-            />
+    <div className="container my-5">
+      <div className="row">
+        <div className="col-lg-2">
+
+        </div>
+        <div className="col-lg-10">
+          <h1>Login Form</h1>
+          <div className="my-3">
+            <form onSubmit={handleSubmit}>
+              <div className="col-lg-9 my-2">                
+                <input
+                  name="username"
+                  className="form-control"
+                  placeholder="Username"
+                  value={formData.username}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="col-lg-9 my-2">                
+                <input
+                  name="password"
+                  className="form-control"
+                  placeholder="Password"
+                  type="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <button className="btn btn-lg btn-primary my-3">
+                Submit
+              </button>
+            </form>
           </div>
-          <div>
-            <label>Password</label>
-            <input
-              name="password"
-              type="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <button>
-            Submit
-          </button>
-        </form>
+        </div>
+        <div className="col-lg-2">
+
+        </div>
       </div>
     </div>
   );
