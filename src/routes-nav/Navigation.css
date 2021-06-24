@@ -10,12 +10,16 @@
     font-size: 24px;
 }
 
+.navbar-brand:hover {
+    color: #4D61FC;
+}
+
 .nav-link {
-    color: rgb(53, 53, 53);
+    color: #333232;
 }
 
 .nav-link:hover {
-    color: rgb(109, 108, 108);
+    color: #4D61FC
 }
 
 /* .nav-link.active {

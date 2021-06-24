@@ -18,16 +18,26 @@ function CompanyDetail() {
     async function getCompany() {
       setCompany(await JoblyApi.getCompany(handle));
     }
-    getCompany();    
+    getCompany();
   }, [handle]);
 
   if (!company) return <LoadingSpinner />;
 
   return (
-    <div>
-      <h1>{company.name}</h1>
-      <h4>{company.description}</h4>
-      <JobCardList jobs={company.jobs} />      
+    <div className="container">
+      <div className="row">
+        <div className="col-lg-2">
+
+        </div>
+        <div className="col-lg-10 my-4">
+          <h1 className="my-2">{company.name}</h1>
+          <h4 className="my-3">{company.description}</h4>
+          <JobCardList jobs={company.jobs} />
+        </div>
+        <div className="col-lg-2">
+
+        </div>
+      </div>
     </div>
   );
 }

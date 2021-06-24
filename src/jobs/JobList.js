@@ -25,12 +25,23 @@ function JobList() {
   if (!jobs) return <LoadingSpinner />;
 
   return (
-    <div>
-      <SearchForm searchFor={search} />
-      {jobs.length 
-        ? <JobCardList jobs={jobs} />
-        : <p>No results found</p>
-      }
+    <div className="container">
+      <div className="row">
+        <div className="col-lg-2">
+
+        </div>
+        <div className="col-lg-8">
+          <div className="my-3"><h1 className="text-center">Jobs</h1></div>
+          <SearchForm searchFor={search} />
+          {jobs.length
+            ? <JobCardList jobs={jobs} />
+            : <p>No results found</p>
+          }
+        </div>
+        <div className="col-lg-2">
+
+        </div>
+      </div>
     </div>
   );
 }

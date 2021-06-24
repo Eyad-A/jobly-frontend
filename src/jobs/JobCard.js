@@ -31,7 +31,7 @@ function JobCard({ id, title, salary, equity, companyName }) {
           <p>{companyName}</p>
           {salary && <div>Salary: {formatSalary(salary)}</div>}
           {equity !== undefined && <div>Equity: {equity}</div>}
-          <button className="btn btn-danger font-weight-bold text-uppercase float-right" onClick={handleApply} disabled={applied}>
+          <button className="btn btn-primary my-3 font-weight-bold text-uppercase float-right" onClick={handleApply} disabled={applied}>
             {applied ? "Applied" : "Apply"}
           </button>
         </div>
