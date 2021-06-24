@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../auth/UserContext";
+import "./Homepage.css";
+import hero from "../StartupIdea.png";
 
 /**
  * Home page
@@ -13,18 +15,19 @@ function Homepage() {
   const { currentUser } = useContext(UserContext);
 
   return (
-    <div>
-      <div>
-        <h1>Jobly</h1>
-        <h5>The best job board on the internet</h5>
+    <div className="homepage">
+      <div className="container text-center">
+        <img src={hero} alt="Man applying for jobs" className="heroimage" />
+        <h1 className="mb-4 font-weight-bold">Jobly</h1>
+        <h5 className="lead">Connecting companies and jobs seekers since 2021!</h5>
         {currentUser ? 
           <h3>Welcome back, {currentUser.firstName || currentUser.username}</h3>
           : (
             <p>
-              <Link to="/login">
+              <Link className="btn btn-primary font-weight-bold mx-2 my-2" to="/login">
                 Login 
               </Link>
-              <Link to="/signup">
+              <Link className="btn btn-primary font-weight-bold mx-2 my-2" to="/signup">
                 Signup 
               </Link>
             </p>

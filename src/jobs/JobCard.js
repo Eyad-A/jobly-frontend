@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import UserContext from "../auth/UserContext";
+import "./JobCard.css";
 
 /**
  * Renders information about a job 
@@ -24,24 +25,28 @@ function JobCard({ id, title, salary, equity, companyName }) {
 
   if (currentUser) {
     return (
-      <div> {applied}
-        <h3>{title}</h3>
-        <p>{companyName}</p>
-        {salary && <div>Salary: {formatSalary(salary)}</div>}
-        {equity !== undefined && <div>Equity: {equity}</div>}
-        <button className="btn btn-small" onClick={handleApply} disabled={applied}>
-          {applied ? "Applied" : "Apply"}
-        </button>
+      <div className="JobCard card"> {applied}
+        <div className="card-body">
+          <h5 className="card-title">{title}</h5>
+          <p>{companyName}</p>
+          {salary && <div>Salary: {formatSalary(salary)}</div>}
+          {equity !== undefined && <div>Equity: {equity}</div>}
+          <button className="btn btn-danger font-weight-bold text-uppercase float-right" onClick={handleApply} disabled={applied}>
+            {applied ? "Applied" : "Apply"}
+          </button>
+        </div>
       </div>
     );
   } else {
     return (
-      <div>
-        <h3>{title}</h3>
-        <p>{companyName}</p>
-        {salary && <div>Salary: {formatSalary(salary)}</div>}
-        {equity !== undefined && <div>Equity: {equity}</div>}
-        <p>LOG IN TO APPLY</p>
+      <div className="JobCard card">
+        <div className="card-body">
+          <h5 className="card-title">{title}</h5>
+          <p>{companyName}</p>
+          {salary && <div>Salary: {formatSalary(salary)}</div>}
+          {equity !== undefined && <div>Equity: {equity}</div>}
+          <p>LOG IN TO APPLY</p>
+        </div>
       </div>
     );
   }

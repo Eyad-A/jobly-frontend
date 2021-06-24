@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import UserContext from "../auth/UserContext";
+import "./Navigation.css"
 
 /**
  * Nav bar that shows up on top of every page
@@ -15,63 +16,77 @@ function Navigation({ logout }) {
 
   function loggedInNav() {
     return (
-      <ul>
-        <li>
-          <NavLink to="/companies">
-            companies
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/jobs">
-            Jobs
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/profile">
-            profile
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/" onClick={logout}>
-            Logout 
-          </NavLink>
-        </li>
-      </ul>
+      <div className="container-fluid">
+        <Link className="navbar-brand link-dark" to="/">
+          Jobly
+        </Link>
+        <div className="justify-content-end">
+          <ul className="navbar-nav ml-auto justify-content-end">
+            <li className="nav-item mr-4">
+              <NavLink className="nav-link" to="/companies">
+                Companies
+              </NavLink>
+            </li>
+            <li className="nav-item mr-4">
+              <NavLink className="nav-link" to="/jobs">
+                Jobs
+              </NavLink>
+            </li>
+            <li className="nav-item mr-4">
+              <NavLink className="nav-link" to="/profile">
+                Profile
+              </NavLink>
+            </li>
+            <li className="nav-item mr-4">
+              <NavLink className="nav-link" to="/" onClick={logout}>
+                Logout
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
     );
   }
 
   function loggedOutNav() {
     return (
-      <ul>
-        <li>
-          <NavLink to="/companies">
-            Companies 
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/jobs">
-            Jobs
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/login">
-            Login 
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/signup">
-            Signup 
-          </NavLink>
-        </li>        
-      </ul>
+      <div className="container-fluid">
+        <Link className="navbar-brand link-dark" to="/">
+          Jobly
+        </Link>
+        <div className="justify-content-end">
+          <ul className="navbar-nav ml-auto justify-content-end">
+            <li className="nav-item mr-4">
+              <NavLink className="nav-link" to="/companies">
+                Companies
+              </NavLink>
+            </li>
+            <li className="navbar-item mr-4">
+              <NavLink className="nav-link" to="/jobs">
+                Jobs
+              </NavLink>
+            </li>
+            <li className="navbar-item mr-4">
+              <NavLink className="nav-link" to="/login">
+                Login
+              </NavLink>
+            </li>
+            <li className="navbar-item mr-4">
+              <NavLink className="nav-link" to="/signup">
+                Signup
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+
+      </div>
     );
   }
 
   return (
-    <nav>
-      <Link to="/">
-        Jobly 
-      </Link>
+    <nav className="Navigation navbar navbar-expand-md">
       {currentUser ? loggedInNav() : loggedOutNav()}
     </nav>
   );

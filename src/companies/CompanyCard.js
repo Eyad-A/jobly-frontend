@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./CompanyCard.css";
 
 /**
  * Company Card 
@@ -8,12 +9,12 @@ import { Link } from "react-router-dom";
 
 function CompanyCard({ name, description, logoUrl, handle }) {
   return (
-    <Link to={`/companies/${handle}`}>
-      <div>
-        <h4>
+    <Link className="CompanyCard card" to={`/companies/${handle}`}>
+      <div className="card-body">
+        <h5>
           {name} 
-          {logoUrl && <img src={logoUrl} alt={name} />}
-        </h4>
+          {logoUrl && <img src={logoUrl} alt={name} className="float-right ml-5" />}
+        </h5>
         <p>{description}</p>
       </div>
     </Link>

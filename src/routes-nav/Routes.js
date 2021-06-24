@@ -11,7 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 
 function Routes({ login, signup }) {
   return (
-    <div className="pt-5">
+    <div className="">
       <Switch>
 
         <Route exact path="/">
