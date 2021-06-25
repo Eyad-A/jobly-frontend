@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import Alert from "../common/Alert";
 
 /**
  * Signup form 
@@ -93,6 +94,12 @@ function SignupForm({ signup }) {
                   onChange={handleChange}
                 />
               </div>
+
+              {formErrors.length
+                ? <Alert type="danger" message={formErrors} />
+                : null
+              }
+
               <button className="btn btn-lg btn-primary my-3">
                 Submit
               </button>

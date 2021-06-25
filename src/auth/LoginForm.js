@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import Alert from "../common/Alert";
 
 /** Login form
  * Shows a login form 
@@ -42,7 +43,7 @@ function LoginForm({ login }) {
           <h1>Login Form</h1>
           <div className="my-3">
             <form onSubmit={handleSubmit}>
-              <div className="col-lg-9 my-2">                
+              <div className="col-lg-9 my-2">
                 <input
                   name="username"
                   className="form-control"
@@ -52,7 +53,7 @@ function LoginForm({ login }) {
                   required
                 />
               </div>
-              <div className="col-lg-9 my-2">                
+              <div className="col-lg-9 my-2">
                 <input
                   name="password"
                   className="form-control"
@@ -63,6 +64,12 @@ function LoginForm({ login }) {
                   required
                 />
               </div>
+
+              {formErrors.length
+                ? <Alert type="danger" message={formErrors} />
+                : null
+              }
+
               <button className="btn btn-lg btn-primary my-3">
                 Submit
               </button>
